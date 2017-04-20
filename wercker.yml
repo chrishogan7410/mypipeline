@@ -17,6 +17,7 @@ dev:
           go get -u github.com/Masterminds/glide
           export PATH=$WERCKER_SOURCE_DIR/bin:$PATH
           glide install
+
     - internal/watch:
         code: go run main.go
         reload: true
@@ -38,20 +39,24 @@ build:
           go get -u github.com/Masterminds/glide
           export PATH=$WERCKER_SOURCE_DIR/bin:$PATH
           glide install
+
     # Build the project
     - script:
         name: go build
         code: |
           go build
+
     # Test the project
     - script:
         name: go test
         code: |
           go test -v $(glide novendor)
+
     - script:
         name: copy files to wercker output
         code: |
           cp -R ./ ${WERCKER_OUTPUT_DIR}
+
 deploy:
  steps:
    - internal/docker-push:
