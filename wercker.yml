@@ -3,7 +3,7 @@ box: golang
 dev:
   steps:
     - setup-go-workspace:
-        package-dir: github.com/chrishogan7410/mypipeline
+        package-dir: github.com/chrishogan7410/pipeline
 
     - script:
         name: env
@@ -24,7 +24,7 @@ dev:
 build:
   steps:
     - setup-go-workspace:
-        package-dir: github.com/chrishogan7410/mypipeline
+        package-dir: github.com/chrishogan7410/pipeline
 
     - script:
         name: env
